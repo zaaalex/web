@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   web:
     image: nginx:latest
@@ -10,7 +10,7 @@ services:
     links:
       - php
   php:
-    image: php:7-fpm
+    image: php:8-fpm
     volumes:
       - ./code:/code
 
