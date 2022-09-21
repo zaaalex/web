@@ -1,11 +1,12 @@
 <?php
-/*$a=10;
-$b=3;
+$st=pow(2,10);
+$st=sqrt(245);
+$arr=array(4,2,5,19,13,0,10);
+$sum=0;
+foreach ($arr as $value)
+{
+ $sum+=$value;
+}
+unset($value);
 
-
-echo ($a%$b);*/
-
-$a=10;
-$b=3;
-if ($a%$b==0) echo "Делится: ", ($a/$b);
-else echo "Делится с остатком: ", ($a%$b);
+echo sqrt($sum);
