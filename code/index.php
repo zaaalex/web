@@ -1,7 +1,4 @@
 <?php
-$answer=sqrt(379);
-
-
-echo round($answer, 2), "\t";
-echo ceil($answer), "\n";
-echo round($answer);
+$m=array(4,-2,5,19,-130,0,10);
+echo min($m),"\n";
+echo max($m);
