@@ -1,4 +1,7 @@
 <?php
-$m=array(4,-2,5,19,-130,0,10);
-echo min($m),"\n";
-echo max($m);
+$m=[];
+for ($i=0;$i<10;++$i) {
+$m[$i]=rand();
+}
+
+print_r($m);
