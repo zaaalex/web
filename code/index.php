@@ -1,12 +1,7 @@
 <?php
-$st=pow(2,10);
-$st=sqrt(245);
-$arr=array(4,2,5,19,13,0,10);
-$sum=0;
-foreach ($arr as $value)
-{
- $sum+=$value;
-}
-unset($value);
+$answer=sqrt(379);
 
-echo sqrt($sum);
+
+echo round($answer, 2), "\t";
+echo ceil($answer), "\n";
+echo round($answer);
