@@ -1,11 +1,10 @@
 <?php
-$a=4;
-$b=58;
-echo abs($b-$a);
+$mas=[];
 
-$mas=array(1,2,-1,-2);
-for ($i=0;$i<count($mas);++$i){
-    $mas[$i]=abs($mas[$i]);
+$q=30;
+
+for ($i=1;$i<=$q;++$i){
+    if ($q%$i==0) array_push($mas,$i);
 }
 
 print_r($mas);
