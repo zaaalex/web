@@ -1,10 +1,11 @@
 <?php
-$my_num=5;
-$answer=$my_num;
-$answer+=2;
-$answer*=2;
-$answer-=2;
-$answer/=2;
-$answer-=$my_num;
+/*$a=10;
+$b=3;
 
-echo $answer;
+
+echo ($a%$b);*/
+
+$a=10;
+$b=3;
+if ($a%$b==0) echo "Делится: ", ($a/$b);
+else echo "Делится с остатком: ", ($a%$b);
