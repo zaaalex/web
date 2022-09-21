@@ -1,10 +1,9 @@
 <?php
-$mas=array(1,2,3,4,5,6,7,8,9,10);
 
-$sum=0;$i=0;
-while ($sum<10){
-    $sum+=$mas[$i];
-    $i++;
+function printStringReturnNumber(){
+    echo "я пишу строку и возвращаю число ";
+    return 5;
 }
 
-print_r($i);
+$n=printStringReturnNumber();
+echo $n;
