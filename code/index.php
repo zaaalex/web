@@ -1,10 +1,10 @@
 <?php
-$mas=[];
+$mas=array(1,2,3,4,5,6,7,8,9,10);
 
-$q=30;
-
-for ($i=1;$i<=$q;++$i){
-    if ($q%$i==0) array_push($mas,$i);
+$sum=0;$i=0;
+while ($sum<10){
+    $sum+=$mas[$i];
+    $i++;
 }
 
-print_r($mas);
+print_r($i);
