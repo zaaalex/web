@@ -1,14 +1,14 @@
 <?php
 
-$mas=[[1,2,3],[4],[5,6]];
-$sum=0;
+$mas=[];
 
-foreach ($mas as $m) {
-foreach ($m as $element){
-    $sum+=$element;
+
+for ($i=0;$i<3;++$i){
+    $temp_mass=[];
+    for ($j=0;$j<3;++$j){
+        $temp_mass[$j]=$i*3+$j;
+    }
+    $mas[$i]=$temp_mass;
 }
-}
 
-echo $sum;
-
-
+print_r($mas);
