@@ -9,5 +9,10 @@ function repeatThreeTimes ($s){
     return str_repeat($s,3);
 }
 
-$n=increaseEnthusiasm(repeatThreeTimes("String"));
+function cut($s, $count=10){
+return mb_strimwidth($s,0,$count);
+
+}
+
+$n=cut(increaseEnthusiasm(repeatThreeTimes("String")));
 echo $n;
