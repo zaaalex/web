@@ -1,16 +1,21 @@
 <?php
 
-function print_array($mas, $current){
-    if ($current!= count($mas)) {
-        echo $mas[$current], " ";
-        print_array($mas, $current + 1);
+function suum($c)
+{
+    $sum = 0;
+    while ($c > 0) {
+        $sum += $c % 10;
+        $c = intdiv($c,10);
     }
+    return $sum;
 }
 
-$mas=array(1,2,5,4,5);
-print_array($mas,0);
+$c=999;
+while ($c>10){
+    $c=suum($c);
+}
 
-
+echo $c;
 
 
 
