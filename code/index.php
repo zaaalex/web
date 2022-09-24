@@ -1,15 +1,14 @@
 <?php
 
-function arrayfill($s, $count){
-    $mas=[];
-    for ($i=0;$i<$count;++$i){
-    $mas[$i]=$s;
-    }
+$mas=[[1,2,3],[4],[5,6]];
+$sum=0;
 
-    return $mas;
+foreach ($mas as $m) {
+foreach ($m as $element){
+    $sum+=$element;
+}
 }
 
-print_r(arrayfill("#",5));
-
+echo $sum;
 
 
