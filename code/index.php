@@ -1,18 +1,16 @@
 <?php
 
-function increaseEnthusiasm($s)
-{
-    return str_pad($s, strlen($s) + 1, "!");
+function print_array($mas, $current){
+    if ($current!= count($mas)) {
+        echo $mas[$current], " ";
+        print_array($mas, $current + 1);
+    }
 }
 
-function repeatThreeTimes ($s){
-    return str_repeat($s,3);
-}
+$mas=array(1,2,5,4,5);
+print_array($mas,0);
 
-function cut($s, $count=10){
-return mb_strimwidth($s,0,$count);
 
-}
 
-$n=cut(increaseEnthusiasm(repeatThreeTimes("String")));
-echo $n;
+
+
