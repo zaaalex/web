@@ -1,9 +1,8 @@
 <?php
 
-function printStringReturnNumber(){
-    echo "я пишу строку и возвращаю число ";
-    return 5;
+function increaseEnthusiasm($s){
+    return str_pad($s,strlen($s)+1, "!");
 }
 
-$n=printStringReturnNumber();
+$n=increaseEnthusiasm("String");
 echo $n;
