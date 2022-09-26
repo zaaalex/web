@@ -1,18 +1,13 @@
 <?php
 
-/*● В переменной $arr содержится некоторый массив с числами. Напишите
-условие, которое проверит, что в массиве 3 элемента. Если это так,
-выведите на экран сумму элементов массива.
-*/
-
-function sum($a){
-    $s=0;
-    foreach ($a as $i){
-        $s+=$i;
-    }
-    return $s;
+function str($count){
+    $s="x";
+    return str_repeat($s,$count);
 }
 
-$arr=array (1,2,3);
-if (count ($arr)==3) echo sum($arr);
+for ($i=0;$i<10;++$i){
+    $vivod=str($i);
+    echo $vivod, "\n";
+}
+
 
