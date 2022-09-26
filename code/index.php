@@ -1,5 +1,5 @@
 <?php
 
-$arr=array(1,2,3,4,5);
-echo array_sum($arr)/count($arr);
+/*Найдите сумму чисел от 1 до 100 не используя цикл*/
+echo array_sum(range(1, 100));
 
