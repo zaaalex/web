@@ -3,6 +3,8 @@
 пользователя фамилию, имя и возраст. Запишите эти данные
 в сессию. При заходе на другую страницу выведите эти
 данные на экран.*/
+
+session_start();
 ?>
 
 <!DOCTYPE HTML>
@@ -13,10 +15,17 @@
 </head>
 <body>
 
-<form action="count.php" method="post">
-    <p><b>Enter text:</b></p>
-    <p><textarea rows="10" cols="45" name="text"></textarea></p>
-    <p><input type="submit" value="calculate"></p>
+<form action="calculate.php" method="post">
+    <input type="text" name="surname" placeholder="Фамилия">
+    <input type="text" name="name" placeholder="Имя">
+    <input type=text name="age" placeholder="Возраст">
+    <input type="text" name="salary" placeholder="Зарплата">
+    <input type="text" name="color" placeholder="Любимый цвет">
+    <input type="submit" value="Сохранить">
+</form>
+
+<form action="user.php" method="post">
+    <input type="submit" value="На другую страницу">
 </form>
 
 </body>
