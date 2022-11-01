@@ -1,32 +1,66 @@
 <?php
-/*На одной странице с помощью формы спросите у
-пользователя фамилию, имя и возраст. Запишите эти данные
-в сессию. При заходе на другую страницу выведите эти
-данные на экран.*/
+/*Написать доску объявлений. Пользователь указывает свой
+email, текст объявления, заголовок объявления (форма),
+категория. Для хранения объявлений использовать файлы.*/
 
 session_start();
 ?>
 
-<!DOCTYPE HTML>
-<html>
+<?php
+
+$category = scandir(__DIR__ . '/data');
+$category = array_slice($category, 2);
+
+?>
+<!doctype html>
 <head>
-    <meta charset="utf-8">
-    <title>Тег TEXTAREA</title>
+    <title>Task3</title>
 </head>
-<body>
-
+<html>
+<h1>Добавить объявление:</h1>
 <form action="calculate.php" method="post">
-    <input type="text" name="surname" placeholder="Фамилия">
-    <input type="text" name="name" placeholder="Имя">
-    <input type=text name="age" placeholder="Возраст">
-    <input type="text" name="salary" placeholder="Зарплата">
-    <input type="text" name="color" placeholder="Любимый цвет">
-    <input type="submit" value="Сохранить">
+    <select name="category">
+        <?php
+        foreach ($category as $choose) {
+            echo "<option value='$choose'>$choose</option>";
+        }
+        ?>
+    </select>
+    <input type="text" name="email" placeholder="Email">
+    <input type="text" name="title" placeholder="Заголовок объявления">
+    <textarea name="text" cols="30" rows="10" placeholder="Текст объявления"></textarea>
+
+    <input type="submit" value="Добавить">
 </form>
 
-<form action="user.php" method="post">
-    <input type="submit" value="На другую страницу">
-</form>
+<h1>Доска объявлений:</h1>
 
-</body>
+<table style="border: seagreen", border="1">
+    <tr>
+        <th>title</th>
+        <th>text</th>
+        <th>category</th>
+    </tr>
+    <?php
+    foreach ($category as $file)
+    {
+        $filePath = './data/' . $file;
+        $files2 = scandir($filePath);
+        $files2=array_splice($files2,2);
+
+        foreach ($files2 as $file2) {
+            $filePath2 = './data/' . $file . "/" . $file2;
+            $file3 = fopen($filePath2, "r");
+            $text = fgets($file3);
+
+            fclose($file3);
+            echo "<tr>";
+            echo "<td>" . $file2 . "</td>";
+            echo "<td>" . $text . "</td>";
+            echo "<td>" . $file . "</td>";
+            echo "</tr>";
+        }
+    }
+    ?>
+</table>
 </html>

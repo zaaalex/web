@@ -1,25 +1,27 @@
 <?php
 
-session_start();
+if (!empty($_POST['category']) && !empty($_POST['email'] && !empty($_POST['title']) && !empty($_POST['text']))) {
+    $category = $_POST['category'];
+    $email = $_POST['email'];
+    $title = $_POST['title'];
+    $text = $_POST['text'];
 
-if (!empty($_POST['surname']) && !empty($_POST['name']) && !empty($_POST['age']) && !empty($_POST['salary']) && !empty($_POST['color'])) {
-    $_SESSION['info'] = array(
-        'surname' => $_POST['surname'],
-        'name' => $_POST['name'],
-        'age' => $_POST['age'],
-        'salary' => $_POST['salary'],
-        'color' => $_POST['color']
-    );
-    echo "Данные сохранены";
+    $filePath = __DIR__. '/data/' . $category . '/' . $title . '.txt';
+    if (!file_exists($filePath)) {
+        file_put_contents($filePath, $_POST['text']);
+        echo "Объявление успешно добавлено";
+    }
+    else
+    {
+        echo "ERROR: Файл с таким названием уже существует!";
+    }
 }
-else {
-    echo "ERROR: Данные не сохранены!";
+else
+{
+    echo "ERROR: Не все поля запроса заполнены!";
 }
 ?>
 
-<form action="user.php" method="post">
-    <input type="submit" value="На другую страницу">
-</form>
 <form action="index.php" method="post">
-    <input type="submit" value="Ввести данные">
+    <input type="submit" value="Назад">
 </form>
