@@ -9,3 +9,8 @@ if (!empty($_POST['text'])) {
     echo "Количество слов: " . $words . "\n";
     echo "Количество символов: " . $symbols;
 }
+?>
+
+<form action="index.php" method="post">
+    <input type="submit" value="Назад">
+</form>
