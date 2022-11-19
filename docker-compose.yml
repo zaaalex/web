@@ -1,16 +1,26 @@
 version: '3.8'
 services:
-  web:
-    image: nginx:latest
-    ports:
-      - "8080:80"
+  app:
+    build:
+      context: ""
+      dockerfile: ./docker/Dockerfile
+    restart: always
+    working_dir: /var/www/
     volumes:
-      - ./code:/code
-      - ./site.conf:/etc/nginx/conf.d/site.conf
-    links:
-      - php
-  php:
-    image: php:8-fpm
-    volumes:
-      - ./code:/code
+      - ./src:/var/www
 
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - ./src:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d
+
+  composer_installation:
+    image: composer
+    working_dir: /var/www/
+    volumes:
+      - ./src/public:/var/www
+    command: sh -c "composer install --ignore-platform-reqs"
