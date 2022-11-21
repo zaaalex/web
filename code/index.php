@@ -1,15 +1,11 @@
 <?php
-/*Написать доску объявлений. Пользователь указывает свой
-email, текст объявления, заголовок объявления (форма),
-категория. Для хранения объявлений использовать файлы.*/
 
 session_start();
-?>
 
-<?php
-
-$category = scandir(__DIR__ . '/data');
-$category = array_slice($category, 2);
+$mysqli = new mysqli('db', 'root', 'helloworld', 'web');
+if (mysqli_connect_errno()){
+    throw new \RuntimeException(mysqli_connect_error());
+}
 
 ?>
 <!doctype html>
@@ -21,10 +17,10 @@ $category = array_slice($category, 2);
 <form action="calculate.php" method="post">
     <select name="category">
         <?php
-        foreach ($category as $choose) {
-            echo "<option value='$choose'>$choose</option>";
-        }
-        ?>
+        $result = $mysqli->query("SELECT * FROM category");
+        while($row = $result->fetch_assoc()){ ?>
+           <option value=<?=$row["category_name"]?>><?=$row["category_name"]?></option>
+        <?php } ?>
     </select>
     <input type="text" name="email" placeholder="Email">
     <input type="text" name="title" placeholder="Заголовок объявления">
@@ -43,22 +39,15 @@ $category = array_slice($category, 2);
         <th>description</th>
     </tr>
     <?php
-        $mysqli = new mysqli('db', 'root', 'helloworld', 'web');
-        if (mysqli_connect_errno()){
-            throw new \RuntimeException(mysqli_connect_error());
-        }
 
     $result = $mysqli->query("SELECT * FROM advert");
-    while($row = $result->fetch_assoc()){
-        ?>
+    while($row = $result->fetch_assoc()){ ?>
         <tr>
-            <td><?php echo $row['category']; ?></td>
-            <td><?php echo $row['email']; ?></td>
-            <td><?php echo $row['title']; ?></td>
-            <td><?php echo $row['description']; ?></td>
+            <td><?= $row['category'] ?></td>
+            <td><?= $row['email'] ?></td>
+            <td><?= $row['title'] ?></td>
+            <td><?= $row['description'] ?></td>
         </tr>
-        <?php
-    }
-    ?>
+    <?php } ?>
 </table>
 </html>

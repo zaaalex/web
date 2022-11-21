@@ -8,3 +8,9 @@ create table advert
     title varchar (255) not null,
     description varchar (255) not null
 );
+
+CREATE table category
+(
+    category_id int auto_increment unique,
+    category_name varchar (32) not null
+);
