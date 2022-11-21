@@ -28,7 +28,7 @@ $category = array_slice($category, 2);
     </select>
     <input type="text" name="email" placeholder="Email">
     <input type="text" name="title" placeholder="Заголовок объявления">
-    <textarea name="text" cols="30" rows="10" placeholder="Текст объявления"></textarea>
+    <textarea name="description" cols="30" rows="10" placeholder="Текст объявления"></textarea>
 
     <input type="submit" value="Добавить">
 </form>
@@ -37,29 +37,27 @@ $category = array_slice($category, 2);
 
 <table style="border: seagreen", border="1">
     <tr>
-        <th>title</th>
-        <th>text</th>
         <th>category</th>
+        <th>email</th>
+        <th>title</th>
+        <th>description</th>
     </tr>
     <?php
-    foreach ($category as $file)
-    {
-        $filePath = './data/' . $file;
-        $files2 = scandir($filePath);
-        $files2=array_splice($files2,2);
-
-        foreach ($files2 as $file2) {
-            $filePath2 = './data/' . $file . "/" . $file2;
-            $file3 = fopen($filePath2, "r");
-            $text = fgets($file3);
-
-            fclose($file3);
-            echo "<tr>";
-            echo "<td>" . $file2 . "</td>";
-            echo "<td>" . $text . "</td>";
-            echo "<td>" . $file . "</td>";
-            echo "</tr>";
+        $mysqli = new mysqli('db', 'root', 'helloworld', 'web');
+        if (mysqli_connect_errno()){
+            throw new \RuntimeException(mysqli_connect_error());
         }
+
+    $result = $mysqli->query("SELECT * FROM advert");
+    while($row = $result->fetch_assoc()){
+        ?>
+        <tr>
+            <td><?php echo $row['category']; ?></td>
+            <td><?php echo $row['email']; ?></td>
+            <td><?php echo $row['title']; ?></td>
+            <td><?php echo $row['description']; ?></td>
+        </tr>
+        <?php
     }
     ?>
 </table>

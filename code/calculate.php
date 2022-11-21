@@ -1,20 +1,20 @@
 <?php
 
-if (!empty($_POST['category']) && !empty($_POST['email'] && !empty($_POST['title']) && !empty($_POST['text']))) {
+if (!empty($_POST['category']) && !empty($_POST['email'] && !empty($_POST['title']) && !empty($_POST['description']))) {
     $category = $_POST['category'];
     $email = $_POST['email'];
     $title = $_POST['title'];
-    $text = $_POST['text'];
+    $description = $_POST['description'];
 
-    $filePath = __DIR__. '/data/' . $category . '/' . $title . '.txt';
-    if (!file_exists($filePath)) {
-        file_put_contents($filePath, $_POST['text']);
-        echo "Объявление успешно добавлено";
+    $mysqli = new mysqli('db', 'root', 'helloworld', 'web');
+    if (mysqli_connect_errno()){
+        throw new \RuntimeException(mysqli_connect_error());
     }
-    else
-    {
-        echo "ERROR: Файл с таким названием уже существует!";
-    }
+
+    $mysqli->query("INSERT INTO advert (category, email, title, description) 
+                          VALUES('${category}', '${email}', '${title}', '${description}')");
+
+    echo "Ваше объявление успешно добавлено!";
 }
 else
 {
