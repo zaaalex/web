@@ -14,3 +14,8 @@ CREATE table category
     category_id int auto_increment unique,
     category_name varchar (32) not null
 );
+
+INSERT INTO category (category_name) VALUES
+(
+'PHONE', 'GIFT', 'CAR'
+);

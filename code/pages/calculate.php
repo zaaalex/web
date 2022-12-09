@@ -1,23 +1,20 @@
 <?php
+include_once __DIR__ . "/../boot.php";
 
-if (!empty($_POST['category']) && !empty($_POST['email'] && !empty($_POST['title']) && !empty($_POST['description']))) {
+$allFieldsNotEmpty = !empty($_POST['category']) && !empty($_POST['email'] && !empty($_POST['title']) && !empty($_POST['description']));
+if ($allFieldsNotEmpty) {
     $category = $_POST['category'];
     $email = $_POST['email'];
     $title = $_POST['title'];
     $description = $_POST['description'];
 
-    $mysqli = new mysqli('db', 'root', 'helloworld', 'web');
-    if (mysqli_connect_errno()){
-        throw new \RuntimeException(mysqli_connect_error());
-    }
+    $connection = getDatabaseConnection();
 
-    $mysqli->query("INSERT INTO advert (category, email, title, description) 
+    $connection->query("INSERT INTO advert (category, email, title, description) 
                           VALUES('${category}', '${email}', '${title}', '${description}')");
 
     echo "Ваше объявление успешно добавлено!";
-}
-else
-{
+} else {
     echo "ERROR: Не все поля запроса заполнены!";
 }
 ?>
