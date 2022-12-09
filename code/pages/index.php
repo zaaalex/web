@@ -9,7 +9,7 @@ $connection = getDatabaseConnection();
 <!doctype html>
 <html>
 <h1>Добавить объявление:</h1>
-<form action="calculate.php" method="post">
+<form action="addAdvert.php" method="post">
     <select name="category">
         <?php
         $result = $connection->query("SELECT * FROM category");
